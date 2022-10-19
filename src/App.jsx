@@ -6,11 +6,12 @@ import Tempanddetail from './components/Tempanddetail'
 import Forecast from './components/Forecast'
 import getFormatttedWeatherData from './services/weatherService'
 import { useState, useEffect } from 'react'
-
+import Charts from './components/Charts'
 function App() {
 const [query,setQuery]=useState({q:"delhi"})
 const [units,setUnit]=useState("metric")
 const [weather,setWeather]=useState(null)
+
 useEffect(()=>{
   const fetchWeather= async()=>{
     await getFormatttedWeatherData({...query,units:units}).then((data)=>{
@@ -37,16 +38,19 @@ useEffect(()=>{
     }
 
   }
+  console.log(weather)
   return (
     
     <div className="py-5 px-4" style={{background:changeBg(),boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",borderRadius:"5px"}}>
       <Quicklinks setQuery={setQuery}/>
       <Inputs setQuery={setQuery} units={units} setUnit={setUnit}/>
+      
       {weather && (
+        
         <div>
       <Timelocation weather={weather}/>
       <Tempanddetail weather={weather}/>
-      
+      <Charts weather={weather}/>
       <Forecast title="Hourly" items={weather.hourly}/>
       
         </div>
