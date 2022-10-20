@@ -1,8 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import getFormatttedWeatherData from '../services/weatherService'
 
-function Inputs({setQuery, units, setUnit}) {
-  const [city,setCity]=useState("")
+function Inputs({setQuery, units, setUnit,city,setCity,query,weather}) {
+  
   const searchHandler=()=>{
     if(city !== ""){
       setQuery({q:city})
@@ -13,7 +14,12 @@ function Inputs({setQuery, units, setUnit}) {
       navigator.geolocation.getCurrentPosition((position)=>{
         let lat=position.coords.latitude
         let lon=position.coords.longitude
+       // console.log(lat,lon)
         setQuery({lat,lon})
+        //console.log(query)
+        
+        //console.log(weather)
+        //setCity(weather.name)
       })
     }
   }
@@ -23,6 +29,16 @@ function Inputs({setQuery, units, setUnit}) {
       setUnit(selectedUnit)
     }
   }
+  /*useEffect(()=>{
+    if(query.lat&&query.lon){
+      setCity(weather.name)
+    }
+    console.log(query)
+    console.log(weather)
+      //setCity(weather.name)
+    
+    
+  },[query])*/
   return (
     <div className='row justify-content-between align-items-center my-4'>
       <div className="col-8 d-flex justify-content-between align-items-center">

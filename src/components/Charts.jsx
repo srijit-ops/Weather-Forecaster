@@ -20,6 +20,10 @@ function Charts(props) {
     };
     return (
       <div className='my-4'>
+        <div className="d-flex justify-content-start align-items-center mt-4">
+            <p className='fw-bold mb-2' style={{fontSize: "1.2rem"}}>Graphical representation of hourly temperature</p>
+        </div>
+        <hr className='mx-0 mb-3 mt-0' style={{opacity:"1"}}/>
         <Bar data={data} />
       </div>
     );

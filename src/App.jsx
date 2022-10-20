@@ -11,7 +11,7 @@ function App() {
 const [query,setQuery]=useState({q:"delhi"})
 const [units,setUnit]=useState("metric")
 const [weather,setWeather]=useState(null)
-
+const [city,setCity]=useState("delhi")
 useEffect(()=>{
   const fetchWeather= async()=>{
     await getFormatttedWeatherData({...query,units:units}).then((data)=>{
@@ -42,8 +42,8 @@ useEffect(()=>{
   return (
     
     <div className="py-5 px-4" style={{background:changeBg(),boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",borderRadius:"5px"}}>
-      <Quicklinks setQuery={setQuery}/>
-      <Inputs setQuery={setQuery} units={units} setUnit={setUnit}/>
+      <Quicklinks setQuery={setQuery} city={city} setCity={setCity} query={query}/>
+      <Inputs setQuery={setQuery} units={units} setUnit={setUnit} city={city} setCity={setCity} query={query} weather={weather}/>
       
       {weather && (
         
