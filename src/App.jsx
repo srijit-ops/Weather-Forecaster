@@ -21,21 +21,8 @@ useEffect(()=>{
   }
   fetchWeather()
 },[query,units])
-  const changeBg=()=>{
-    if(!weather){
-      return("linear-gradient(118deg, rgba(16,207,146,1) 31%, rgba(35,136,168,1) 91%)")
-    }else{
-      const thresold=units==="metric"?20:60
-      if(weather.temp<=thresold){
-        return("linear-gradient(118deg, rgba(18,136,196,1) 31%, rgba(177,219,240,1) 82%)")
-      }else{
-       return("linear-gradient(118deg, rgba(251,117,50,1) 31%, rgba(227,212,209,1) 92%)")
-      }
-    }
-
-  }
   return (
-    <div className="py-5 px-4" style={{background:changeBg(),boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",borderRadius:"5px"}}>
+    <div className="py-5 px-5 weather_holdr">
       <Quicklinks setQuery={setQuery} city={city} setCity={setCity} query={query}/>
       <Inputs setQuery={setQuery} units={units} setUnit={setUnit} city={city} setCity={setCity} query={query} weather={weather}/>
       {weather && (

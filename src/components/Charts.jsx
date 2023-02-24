@@ -1,30 +1,53 @@
-import React from 'react'
-import Chart from "chart.js/auto";
-import { Bar } from "react-chartjs-2";
+import React, { useState } from 'react'
+
+import AreaChart from "./AreaChart"
+import BarChart from "./BarChart"
+import LineChart from "./LineChart"
 function Charts(props) {
-    const labels = props.weather.hourly.map((item)=>{
-        return item.title
-      })
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Temperature",
-          backgroundColor: "yellow",
-          borderColor: "yellow",
-          data: props.weather.hourly.map((item)=>{
-            return item.temp
-          }) ,
-        },
-      ],
+  
+  const [chart,setChart]=useState(<AreaChart  weather={props.weather.hourly} />)
+  const charts = ["Area", "Line", "Bar"];
+    
+    const handelChart = (chart) => {
+      
+      if(chart==="Area"){
+        
+        setChart(<AreaChart  weather={props.weather.hourly} />)
+        
+      }else if(chart==="Line"){
+        setChart(<LineChart weather={props.weather.hourly}/>)
+        
+      }else{
+        setChart(<BarChart weather={props.weather.hourly}/>)
+        
+      }
+      
     };
+    if(document.getElementById("radio_btns")){
+      document.getElementById("Area").setAttribute("checked","checked")
+    }
+    
     return (
-      <div className='my-4'>
-        <div className="d-flex justify-content-start align-items-center mt-4">
-            <p className='fw-bold mb-2' style={{fontSize: "1.2rem"}}>Graphical representation of hourly temperature</p>
+      <div className='mb-4 mt-5'>
+        <div className="d-flex justify-content-start align-items-center my-4">
+            <p className='fw-bold mb-4' style={{fontSize: "1.5rem"}}>Graphical representation of hourly temperature</p>
         </div>
-        <hr className='mx-0 mb-3 mt-0' style={{opacity:"1"}}/>
-        <Bar data={data} />
+        <div className="row justify-content-evenly align-items-center">
+        {charts.map((chart) => (
+        <div id='radio_btns' className='col-2'>
+          <label htmlFor={chart} style={{color: "rgb(55, 61, 63)",fontSize: "1.1rem",marginRight: "1rem"}} className="fw-bold">{chart} Chart</label>
+          <input
+            type="radio"
+            name="chart"
+            id={chart}
+            onClick={() => handelChart(chart)}
+          />
+        </div>
+      )) 
+      }
+        </div>
+        
+      {chart}
       </div>
     );
   };

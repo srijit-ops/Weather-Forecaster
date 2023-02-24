@@ -3,7 +3,7 @@ import { formatToLocalTime, iconURL } from '../services/weatherService'
 
 function Tempanddetail(props) {
   return (
-    <div>
+    <div style={{marginBottom:"4rem"}}>
       <div className="d-flex justify-content-center align-items-center">
         <p style={{fontSize:"1.15rem"}}>{props.weather.details}</p>
       </div>
@@ -12,7 +12,7 @@ function Tempanddetail(props) {
             <img className="col-2" src= {iconURL(props.weather.icon)} style={{
     height: "auto", width:"12%"}}/>
          
-          <p className="col-2" style={{fontSize:"1.7rem"}}>{`${props.weather.temp.toFixed()}°`}</p>
+          <p className="col-2 fw-bold" style={{fontSize:"2rem"}}>{`${props.weather.temp.toFixed()}°`}</p>
           <div className="col-3 flex-column">
             <div className="row justify-content-center align-items-center mb-1" style={{fontSize:"1.1rem"}}>
             <i className='bx bxs-thermometer col-1'style={{fontSize:"1.5rem"}}></i>

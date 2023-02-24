@@ -33,9 +33,83 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
- 
+  background: url(https://img.freepik.com/free-photo/flat-lay-colorful-circles-paper_23-2148428633.jpg?w=360&t=st=1677215306~exp=1677215906~hmac=1a9bfad1db9e733b708c4a8fd096353eb9d820de967b69874b97b4ae1a4a8c47);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-
+.bx-search, .bx-current-location{
+  transform: scale(1);
+  color: black;
+  transition: all 0.2s;
+}
+.bx-search:hover ,.bx-current-location:hover{
+  transform: scale(1.1);
+    color: darkslategrey;
+}
+button{
+  color: black;
+}
+.forecast_card{
+  cursor: pointer;
+  border-radius: 6px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    transform: scale(1);
+    transition: all 0.2s;
+}
+.forecast_card:hover{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: scale(1.06);
+}
+.temp_converter{
+  
+  background: transparent;
+    border: 2px solid #008FFB96;
+    transition: all 0.2s;
+}
+.temp_converter:hover{
+  background:#008FFB96;
+  border: 2px solid transparent;
+}
+.cities
+{
+    position: relative;
+}
+.cities:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.cities:hover:before {
+  visibility: visible;
+  width: 100%;
+}
+.search_bar{
+  border-radius: 5px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    background: transparent;
+    color: black;
+}
+.weather_holdr{
+  background: rgba(255, 255, 255, 0.46);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(6.1px);
+    -webkit-backdrop-filter: blur(6.1px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

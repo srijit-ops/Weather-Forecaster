@@ -30,7 +30,7 @@ useEffect(()=>{
   return (
     <div className='d-flex justify-content-around align-items-center mb-5'>
         {cities.map((city)=>{
-            return <button key={city.id} className='fw-bold' style={{fontSize:"1.1rem"}} onClick={()=>{
+            return <button key={city.id} className='fw-bold cities' style={{fontSize:"1.1rem"}} onClick={()=>{
                 setQuery({q:city.title})
                 
                 }}>
